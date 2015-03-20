@@ -8,6 +8,7 @@
 	<root>
 		<level value="DEBUG" />
 		<appender-ref ref="STDOUT" />
+		<appender-ref ref="APPLICATION" />
 		<appender-ref ref="WARN" />
 		<appender-ref ref="ERROR_ONLY" />
 	</root>
