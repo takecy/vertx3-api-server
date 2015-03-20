@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration>
+<included>
+
+	<logger name="init.server">
+		<level value="DEBUG" />
+		<appender-ref ref="INIT_SERVER" />
+	</logger>
+
+	<logger name="io.vertx">
+		<level value="DEBUG" />
+		<appender-ref ref="APPLICATION" />
+	</logger>
+
+	<logger name="info.takebo">
+		<level value="DEBUG" />
+		<appender-ref ref="APPLICATION" />
+	</logger>
+
+	<logger name="com.jolbox">
+		<level value="DEBUG" />
+		<appender-ref ref="MYSQL" />
+	</logger>
+
+	<logger name="measure">
+		<level value="WARN" />
+		<appender-ref ref="MEASURE" />
+	</logger>
+
+</included>

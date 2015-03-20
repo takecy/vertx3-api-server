@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration>
+<configuration>
+
+	<include resource="appenders.xml" />
+	<include resource="logback_base.xml" />
+
+	<root>
+		<level value="DEBUG" />
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="WARN" />
+		<appender-ref ref="ERROR_ONLY" />
+	</root>
+
+</configuration>

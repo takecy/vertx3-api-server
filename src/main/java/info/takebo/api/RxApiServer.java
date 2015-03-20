@@ -4,16 +4,22 @@
 package info.takebo.api;
 
 import info.takebo.api.util.Runner;
-import io.vertx.core.http.HttpHeaders;
-import io.vertx.core.http.HttpServerOptions;
+import info.takebo.api.verticle.EventbusWorkerVerticle;
+import info.takebo.api.verticle.HttpVerticle;
+import io.vertx.core.DeploymentOptions;
+import io.vertx.core.Future;
 import io.vertx.rxjava.core.AbstractVerticle;
-import io.vertx.rxjava.core.http.HttpServer;
-import io.vertx.rxjava.ext.apex.Router;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author yamashita_takeshi
  */
 public class RxApiServer extends AbstractVerticle {
+
+	private Logger logger = LoggerFactory.getLogger("init.server" + RxApiServer.class.getName());
+	private static final int CPUS = Runtime.getRuntime().availableProcessors();
 
 	// Convenience method so you can run it in your IDE
 	public static void main(String[] args) {
@@ -21,40 +27,19 @@ public class RxApiServer extends AbstractVerticle {
 	}
 
 	@Override
+	public void start(Future<Void> startFuture) throws Exception {
+		// deploy other verticle here
+		super.start(startFuture);
+	}
+
+	@Override
 	public void start() throws Exception {
+		vertx.deployVerticle(HttpVerticle.class.getName());
 
-		// URL routing
-		Router router = Router.router(vertx);
+		DeploymentOptions options = new DeploymentOptions().setWorker(true)
+															.setInstances(CPUS);
+		vertx.deployVerticle(EventbusWorkerVerticle.class.getName(), options);
 
-		router.get("/")
-				.handler(req -> {
-					req.response()
-						.setStatusCode(303)
-						.putHeader(HttpHeaders.LOCATION.toString(), "/hello")
-						.end();
-				});
-
-		router.get("/hello")
-				.handler(req -> {
-					req.response()
-						.putHeader("content-type", "text/html")
-						.end("<html><body><h1>Hello from vert.x! Routing!</h1></body></html>");
-				});
-
-		HttpServerOptions serverOption = new HttpServerOptions().setAcceptBacklog(10000)
-																.setCompressionSupported(true);
-
-		HttpServer server = vertx.createHttpServer(serverOption);
-
-		server.requestHandler(router::accept)
-				.listen(8080);
-
-		// server.requestStream()
-		// .toObservable()
-		// .subscribe(req -> {
-		// req.response()
-		// .putHeader("content-type", "text/html")
-		// .end("<html><body><h1>Hello from vert.x!</h1></body></html>");
-		// });
+		logger.info("start.server.complete");
 	}
 }

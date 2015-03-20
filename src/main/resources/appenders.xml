@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+<included>
+	<appender name="APPLICATION" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/usr/local/vertx/logs/app.log</file>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/usr/local/vertx/logs/app.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+			<maxHistory>5</maxHistory>
+		</rollingPolicy>
+
+		<encoder>
+			<charset>UTF-8</charset>
+			<Pattern>
+				%date{yyyy-MM-dd HH:mm:ss:SSS} [%25.-25thread] %-5level %30.30logger{5}#%-30.30method :%4.-4line -> %msg%n
+			</Pattern>
+		</encoder>
+	</appender>
+
+	<appender name="INIT_SERVER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/usr/local/vertx/logs/init.log</file>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/usr/local/vertx/logs/init.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+			<maxHistory>3</maxHistory>
+		</rollingPolicy>
+
+		<encoder>
+			<charset>UTF-8</charset>
+			<Pattern>
+				%date{yyyy-MM-dd HH:mm:ss:SSS} [%25.-25thread] %-5level %30.30logger{5}#%-30.30method :%4.-4line -> %msg%n
+			</Pattern>
+		</encoder>
+	</appender>
+
+	<appender name="MYSQL" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/usr/local/vertx/logs/mysql.log</file>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/usr/local/vertx/logs/mysql.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+
+		<encoder>
+			<charset>UTF-8</charset>
+			<Pattern>
+				%date{yyyy-MM-dd HH:mm:ss:SSS} [%25.-25thread] %-5level %30.30logger{5}#%-30.30method :%4.-4line -> %msg%n
+			</Pattern>
+		</encoder>
+	</appender>
+
+	<appender name="REDIS" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>/usr/local/vertx/logs/redis.log</file>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/usr/local/vertx/logs/redis.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+
+		<encoder>
+			<charset>UTF-8</charset>
+			<Pattern>
+				%date{yyyy-MM-dd HH:mm:ss:SSS} [%25.-25thread] %-5level %30.30logger{5}#%-30.30method :%4.-4line -> %msg%n
+			</Pattern>
+		</encoder>
+	</appender>
+
+	<!-- 速度計測 -->
+	<appender name="MEASURE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- prudent>true</prudent -->
+		<file>/usr/local/vertx/logs/measure.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/usr/local/vertx/logs/measure.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+			<maxHistory>10</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<charset>UTF-8</charset>
+			<Pattern>
+				%date{yyyy-MM-dd HH:mm:ss:SSS} [%25.-25thread] %-5level %30.30logger{5}#%-30.30method :%4.-4line -> %msg%n
+			</Pattern>
+		</encoder>
+	</appender>
+
+	<!-- warn以上だけを抽出 -->
+	<appender name="WARN" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- prudent>true</prudent -->
+		<file>/usr/local/vertx/logs/app_warn.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/usr/local/vertx/logs/app_warn.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+			<maxHistory>10</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<!-- methodは遅い -->
+			<Pattern>
+				%date{yyyy-MM-dd HH:mm:ss:SSS} [%25.-25thread] %-5level %30.30logger{5}#%-30.30method :%4.-4line -> %msg%n
+			</Pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>WARN</level>
+		</filter>
+	</appender>
+
+	<appender name="ERROR_ONLY" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<!-- prudent>true</prudent -->
+		<file>/usr/local/vertx/logs/app_error.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/usr/local/vertx/logs/app_error.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+			<maxHistory>10</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<!-- methodは遅い -->
+			<Pattern>
+				%date{yyyy-MM-dd HH:mm:ss:SSS} [%25.-25thread] %-5level %30.30logger{5}#%-30.30method :%4.-4line -> %msg%n
+			</Pattern>
+		</encoder>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+	</appender>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<Target>System.out</Target>
+		<encoder>
+			<charset>UTF-8</charset>
+			<Pattern>
+				%date{yyyy-MM-dd HH:mm:ss:SSS} [%25.-25thread] %-5level %30.30logger{5}#%-30.30method :%4.-4line -> %msg%n
+			</Pattern>
+		</encoder>
+	</appender>
+
+</included>
