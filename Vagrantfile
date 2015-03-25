@@ -7,6 +7,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # datastore
   config.vm.define "db" do |db|
+    db.omnibus.chef_version = :latest
+
     db.vm.box = "chef/centos-6.5"
     db.vm.provider "virtualbox" do |vb|
       vb.gui = true
@@ -28,6 +30,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # api
   config.vm.define "api" do |api|
+    api.omnibus.chef_version = :latest
+
     api.vm.box = "chef/centos-6.5"
     api.vm.provider "virtualbox" do |vb|
       vb.gui = true
