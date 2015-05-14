@@ -3,7 +3,7 @@
  */
 package info.takebo.api;
 
-import info.takebo.api.util.Runner;
+import info.takebo.api.runner.Runner;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Vertx;
 

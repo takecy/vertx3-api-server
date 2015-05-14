@@ -1,4 +1,4 @@
-package info.takebo.api.util;
+package info.takebo.api.runner;
 
 public class Runner {
 	private static final String RX_EXAMPLES_DIR = "rx-examples";

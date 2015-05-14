@@ -3,7 +3,7 @@
  */
 package info.takebo.api;
 
-import info.takebo.api.util.Runner;
+import info.takebo.api.runner.Runner;
 import info.takebo.api.verticle.EventbusWorkerVerticle;
 import info.takebo.api.verticle.HttpVerticle;
 import io.vertx.core.DeploymentOptions;

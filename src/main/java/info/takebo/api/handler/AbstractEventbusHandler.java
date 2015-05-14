@@ -3,6 +3,7 @@
  */
 package info.takebo.api.handler;
 
+import rx.Observable;
 import io.vertx.core.Handler;
 import io.vertx.rxjava.ext.apex.RoutingContext;
 
@@ -12,11 +13,11 @@ import io.vertx.rxjava.ext.apex.RoutingContext;
 public abstract class AbstractEventbusHandler<T> implements Handler<RoutingContext> {
 	@Override
 	public void handle(RoutingContext event) {
-		// TODO 自動生成されたメソッド・スタブ
+		Observable<T> t = this.handleInternal(event);
 	}
 
 	/**
 	 * implementation at subclass
 	 */
-	public abstract T handleInternal(RoutingContext event);
+	public abstract Observable<T> handleInternal(RoutingContext event);
 }

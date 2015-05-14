@@ -14,6 +14,7 @@
 
 		<vertx.version>3.0.0-milestone5</vertx.version>
 		<jackson.version>2.5.1</jackson.version>
+		<guice.version>4.0</guice.version>
 	</properties>
 
 	<dependencies>
@@ -50,6 +51,19 @@
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>${jackson.version}</version>
+		</dependency>
+
+		<!-- DI -->
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+			<version>${guice.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.inject.extensions</groupId>
+			<artifactId>guice-multibindings</artifactId>
+			<version>${guice.version}</version>
 		</dependency>
 
 		<!-- JSR-330 -->
