@@ -30,3 +30,4 @@ So you should use [vertx-rx](https://github.com/vert-x3/vertx-rx).
 * Redis connect
 * MySQL connect
 * send http request
+* testing
