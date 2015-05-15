@@ -18,12 +18,22 @@ Vert.x is realy friendly Reactive programing.
 So you should use [vertx-rx](https://github.com/vert-x3/vertx-rx).
 
 #### Dependencies
+##### Application
 * [JDK 8+](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-* [Guice](https://github.com/google/guice)
+* [Guice 4+](https://github.com/google/guice)
 * [RxJava](https://github.com/ReactiveX/RxJava)
-* [Jackson](https://github.com/FasterXML/jackson)
+* [Jackson 2+](https://github.com/FasterXML/jackson)
 * [Guava](https://github.com/google/guava)
 
+##### Build
+* [Maven](https://maven.apache.org/)
+
+##### Testing
+* [Junit 4](https://github.com/junit-team/junit)
+* [Jacoco](https://github.com/jacoco/jacoco)
+
+
+<br/>
 #### Features
 * http routing
 * eventbus
