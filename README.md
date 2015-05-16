@@ -26,12 +26,14 @@ So you should use [vertx-rx](https://github.com/vert-x3/vertx-rx).
 * [Guava](https://github.com/google/guava)
 
 ##### Build
-* [Maven](https://maven.apache.org/)
+* [Maven](https://maven.apache.org/) (back from Gradle)
 
 ##### Testing
 * [Junit 4](https://github.com/junit-team/junit)
 * [Jacoco](https://github.com/jacoco/jacoco)
 
+##### CI
+* [Travis](https://travis-ci.org/)
 
 <br/>
 #### Features
