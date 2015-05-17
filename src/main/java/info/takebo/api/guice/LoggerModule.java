@@ -3,9 +3,9 @@
  */
 package info.takebo.api.guice;
 
-import javax.inject.Singleton;
+import info.takebo.api.logger.LoggerWrapper;
 
-import info.takebo.api.logger.Logger;
+import javax.inject.Singleton;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
@@ -21,7 +21,7 @@ public class LoggerModule extends AbstractModule {
 
 	@Singleton
 	@Provides
-	public Logger logger() {
-		return new Logger();
+	public LoggerWrapper logger() {
+		return new LoggerWrapper("base", "$$");
 	}
 }

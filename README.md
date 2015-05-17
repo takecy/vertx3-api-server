@@ -34,12 +34,15 @@ So you should use [vertx-rx](https://github.com/vert-x3/vertx-rx).
 
 ##### CI
 * [Travis](https://travis-ci.org/)
+* [Jenkins](https://jenkins-ci.org/)
 
 <br/>
 #### Features
+* dependency injection
+* continuous integration
 * http routing
 * eventbus
+* send http request
 * Redis connect
 * MySQL connect
-* send http request
 * testing
