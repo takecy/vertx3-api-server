@@ -3,6 +3,7 @@
  */
 package info.takebo.api;
 
+import info.takebo.api.logger.LoggerWrapper;
 import info.takebo.api.runner.Runner;
 import info.takebo.api.verticle.EventbusWorkerVerticle;
 import info.takebo.api.verticle.HttpVerticle;
@@ -10,15 +11,13 @@ import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Future;
 import io.vertx.rxjava.core.AbstractVerticle;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * @author yamashita_takeshi
  */
 public class RxApiServer extends AbstractVerticle {
 
-	private Logger logger = LoggerFactory.getLogger("init.server" + RxApiServer.class.getName());
+	private LoggerWrapper logger = new LoggerWrapper("init.server"
+														+ RxApiServer.class.getName());
 	private static final int CPUS = Runtime.getRuntime().availableProcessors();
 
 	// Convenience method so you can run it in your IDE
@@ -34,6 +33,7 @@ public class RxApiServer extends AbstractVerticle {
 
 	@Override
 	public void start() throws Exception {
+
 		vertx.deployVerticle(HttpVerticle.class.getName());
 
 		DeploymentOptions options = new DeploymentOptions().setWorker(true)

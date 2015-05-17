@@ -3,13 +3,12 @@
  */
 package info.takebo.api.verticle;
 
-import java.util.Calendar;
-import java.util.Date;
-
 import io.vertx.core.eventbus.DeliveryOptions;
 import io.vertx.rxjava.core.AbstractVerticle;
 import io.vertx.rxjava.core.eventbus.EventBus;
 import io.vertx.rxjava.core.eventbus.MessageConsumer;
+
+import java.util.Calendar;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
