@@ -12,16 +12,15 @@ import io.vertx.core.Future;
 import io.vertx.rxjava.core.AbstractVerticle;
 
 /**
- * @author yamashita_takeshi
+ * @author takecy
  */
 public class RxApiServer extends AbstractVerticle {
 
-	private LoggerWrapper logger = new LoggerWrapper("init.server"
-														+ RxApiServer.class.getName());
+	private LoggerWrapper logger = new LoggerWrapper("init.server" + RxApiServer.class.getName());
 	private static final int CPUS = Runtime.getRuntime().availableProcessors();
 
 	// Convenience method so you can run it in your IDE
-	public static void main(String[] args) {
+	public static void main(String... args) {
 		Runner.runExample(RxApiServer.class);
 	}
 
@@ -36,8 +35,7 @@ public class RxApiServer extends AbstractVerticle {
 
 		vertx.deployVerticle(HttpVerticle.class.getName());
 
-		DeploymentOptions options = new DeploymentOptions().setWorker(true)
-															.setInstances(CPUS);
+		DeploymentOptions options = new DeploymentOptions().setWorker(true).setInstances(CPUS);
 		vertx.deployVerticle(EventbusWorkerVerticle.class.getName(), options);
 
 		logger.info("start.server.complete");

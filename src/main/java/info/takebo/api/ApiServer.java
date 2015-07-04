@@ -8,7 +8,7 @@ import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Vertx;
 
 /**
- * @author yamashita_takeshi
+ * @author takecy
  */
 public class ApiServer extends AbstractVerticle {
 

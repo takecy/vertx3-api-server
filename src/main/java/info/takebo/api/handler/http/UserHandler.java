@@ -7,7 +7,7 @@ import info.takebo.api.entity.User;
 import info.takebo.api.handler.AbstractHttpHandler;
 import io.vertx.rxjava.core.MultiMap;
 import io.vertx.rxjava.core.http.HttpServerRequest;
-import io.vertx.rxjava.ext.apex.RoutingContext;
+import io.vertx.rxjava.ext.web.RoutingContext;
 import rx.Observable;
 
 /**

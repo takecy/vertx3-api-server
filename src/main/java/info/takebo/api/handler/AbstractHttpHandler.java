@@ -3,19 +3,17 @@
  */
 package info.takebo.api.handler;
 
+import com.google.common.net.HttpHeaders;
+import com.google.common.net.MediaType;
 import info.takebo.api.logger.LoggerWrapper;
 import io.vertx.core.Handler;
 import io.vertx.rxjava.core.MultiMap;
 import io.vertx.rxjava.core.buffer.Buffer;
 import io.vertx.rxjava.core.http.HttpServerRequest;
-import io.vertx.rxjava.ext.apex.RoutingContext;
-
-import java.util.Objects;
-
+import io.vertx.rxjava.ext.web.RoutingContext;
 import rx.Observable;
 
-import com.google.common.net.HttpHeaders;
-import com.google.common.net.MediaType;
+import java.util.Objects;
 
 /**
  * @author takecy

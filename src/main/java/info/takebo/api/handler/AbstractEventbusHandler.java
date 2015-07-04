@@ -39,6 +39,5 @@ public abstract class AbstractEventbusHandler<T> implements Handler<Message<T>> 
 	 * @param headers
 	 * @param message
 	 */
-	public abstract Observable<T> handleInternal(MultiMap headers,
-													Message<T> message);
+	public abstract Observable<T> handleInternal(MultiMap headers, Message<T> message);
 }

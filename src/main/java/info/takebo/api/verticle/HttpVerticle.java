@@ -3,36 +3,29 @@
  */
 package info.takebo.api.verticle;
 
-import info.takebo.api.guice.AopModule;
-import info.takebo.api.guice.ContextModule;
-import info.takebo.api.guice.HandlerModule;
-import info.takebo.api.guice.LoggerModule;
-import info.takebo.api.guice.ServiceModule;
+import com.google.common.net.HttpHeaders;
+import com.google.common.net.MediaType;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import info.takebo.api.guice.*;
 import info.takebo.api.handler.http.AliveHandler;
 import io.vertx.core.http.HttpServerOptions;
 import io.vertx.core.json.JsonObject;
 import io.vertx.rxjava.core.AbstractVerticle;
 import io.vertx.rxjava.core.buffer.Buffer;
 import io.vertx.rxjava.core.http.HttpServer;
-import io.vertx.rxjava.ext.apex.Router;
-
-import java.util.Objects;
-
+import io.vertx.rxjava.ext.web.Router;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.net.HttpHeaders;
-import com.google.common.net.MediaType;
-import com.google.inject.Guice;
-import com.google.inject.Injector;
+import java.util.Objects;
 
 /**
- * @author yamashita_takeshi
+ * @author takecy
  */
 public class HttpVerticle extends AbstractVerticle {
 
-	private Logger logger = LoggerFactory.getLogger("init.server"
-													+ HttpVerticle.class.getName());
+	private Logger logger = LoggerFactory.getLogger("init.server" + HttpVerticle.class.getName());
 
 	@Override
 	public void start() throws Exception {
@@ -47,7 +40,7 @@ public class HttpVerticle extends AbstractVerticle {
 		// URL routing
 		Router router = Router.router(vertx);
 
-		router.options("*")
+		router.options("/*")
 				.handler(context -> {
 					context.response()
 							.putHeader(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*")
