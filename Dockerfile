@@ -1,8 +1,10 @@
-FROM dockerfile/java:oracle-java8
+FROM java:8
 
 MAINTAINER takecy
 
 RUN apt-get update && apt-get install -y nginx
+
+WORKDIR /data
 
 EXPOSE 80 8080
 
