@@ -2,13 +2,20 @@ FROM java:8
 
 MAINTAINER takecy
 
-RUN apt-get update && apt-get install -y nginx
+ENV APP_HOME=/usr/local/vertx
 
 WORKDIR /data
 
 EXPOSE 80 8080
 
-VOLUME . /usr/local/vertx
+VOLUME . /data
+
+RUN apt-get update && apt-get install -y nginx
+RUN mkdir -p /usr/local/vertx
+RUN mkdir -p /var/log/vertx
+
+ADD . /data
 
 CMD ["bash"]
-ENTRYPOINT /usr/sbin/nginx -g 'daemon off;' -c /etc/nginx/nginx.conf
+
+ENTRYPOINT java -jar -server /usr/local/vertx/api.jar
