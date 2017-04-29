@@ -7,6 +7,7 @@ REST API server template of Vert.x 3.x
 ![](https://img.shields.io/badge/vert.x-3.0+-blue.svg?style=flat-square)
 
 <br/>
+
 ## Overview
 RESTful API server template of [Vert.x](https://github.com/eclipse/vert.x) 3+.  
 Based on was operational experience of Vert.x 2.x, the template application is made in the configuration, such as use in a production environment.  
@@ -37,6 +38,7 @@ So you should use [vertx-rx](https://github.com/vert-x3/vertx-rx).
 * [Jenkins](https://jenkins-ci.org/)
 
 <br/>
+
 ### Features
 * dependency injection
 * continuous integration
@@ -49,5 +51,6 @@ So you should use [vertx-rx](https://github.com/vert-x3/vertx-rx).
 
 
 <br/>
+
 ## License
 [MIT](./LICENSE)
